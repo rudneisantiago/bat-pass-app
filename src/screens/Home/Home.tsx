@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import { styles } from './Style';
-import { BatLogo } from "../../components/BatLogo/BatLogo";
+import { BatLogo, BatTextInput } from "../../components";
 
 export default function Home() {
   return (
@@ -9,7 +9,9 @@ export default function Home() {
       <View style={styles.logoContainer}>
         <BatLogo />
       </View>
-      <Text>I'm Batman! 🦇</Text>
+      <View style={styles.inputContainer}>
+        <BatTextInput />
+      </View>
       <StatusBar style="auto" />
     </View>
   )

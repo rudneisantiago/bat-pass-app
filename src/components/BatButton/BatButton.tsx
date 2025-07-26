@@ -3,12 +3,14 @@ import { Pressable, Text } from "react-native";
 
 import { styles } from "./BatButtonStyles";
 import { BatTextInput } from "../BatTextInput/BatTextInput";
+import generatePass from "../../services/passwordService";
 
 export function BatButton() {
   const [pass, setPass] = useState("");
 
   function handleGenerateButton() {
-    setPass("xupisco");
+    const generateToken = generatePass();
+    setPass(generatePass);
   }
 
   function handleCopyButton() {

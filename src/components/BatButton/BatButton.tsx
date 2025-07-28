@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, ToastAndroid } from "react-native";
+import * as Clipboard from 'expo-clipboard'
 
 import { styles } from "./BatButtonStyles";
 import { BatTextInput } from "../BatTextInput/BatTextInput";
@@ -10,11 +11,12 @@ export function BatButton() {
 
   function handleGenerateButton() {
     const generateToken = generatePass();
-    setPass(generatePass);
+    setPass(generateToken);
   }
 
-  function handleCopyButton() {
-    setPass("");
+  async function handleCopyButton() {
+    await Clipboard.setStringAsync(pass)
+    ToastAndroid.show('Senha copiada!', 50)
   }
 
   return (
@@ -25,14 +27,14 @@ export function BatButton() {
         accessibilityLabel="Clique aqui para gerar"
         onPress={handleGenerateButton}
       >
-        <Text style={styles.text}>🦇 Gerar</Text>
+        <Text style={styles.text}>Gerar Senha</Text>
       </Pressable>
       <Pressable
         style={styles.pressable}
         accessibilityLabel="Clique aqui para copiar"
         onPress={handleCopyButton}
       >
-        <Text style={styles.text}>Copiar 🦇</Text>
+        <Text style={styles.text}>🦇 Copiar 🦇</Text>
       </Pressable>
     </>
   );
